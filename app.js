@@ -1,20 +1,11 @@
+const { print } = require("./src/utils/helper.util");
+const env = require("./src/config/secrets.json");
 const express = require("express");
 const app = express();
-const Axios = require("axios");
-const { default: axios } = require("axios");
-app.use("/static", express.static("./src/public"));
 
-app.get("/", (req, res) => {
-  axios
-    .request({
-      url: "http://api.open-notify.org/iss-now.json",
-    })
-    .then((value) => {
-      console.log(value.data);
-      res.json(value.data);
-    });
-});
+app.use('/api',require("./src/routes/google.route"))
 
-app.listen(8000, function () {
-  console.log("Listening On Port 8000");
+
+app.listen(env.port, () => {
+  print("Port:", env.port, "Running");
 });
