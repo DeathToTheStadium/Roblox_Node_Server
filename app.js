@@ -9,6 +9,6 @@ app.use("/static", express.static("./src/public"));
 app.get("/", (req, res) => {
   res.send("<h1>Hello😊,<br> Welcome to the proxy server</h1>");
 });
-app.listen(env.port, (Conn) => {
+app.listen((Conn) => {
   print("Port:", env.port, "Running");
 });
